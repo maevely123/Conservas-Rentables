@@ -64,7 +64,7 @@ export default function App() {
                 Convierte conservas caseras en un <span className="text-olive-600 relative inline-block">ingreso extra<svg className="absolute -bottom-2 w-full h-3 text-olive-300" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,5 Q50,10 100,5" stroke="currentColor" strokeWidth="4" fill="transparent"/></svg></span>
               </h1>
               <p className="mt-8 text-lg md:text-xl leading-relaxed text-olive-700 font-medium">
-                Aprende a hacer conservas artesanales irresistibles y descubre cómo vender con un método simple y práctico.
+                Obtén acceso a <strong className="font-extrabold text-olive-900 bg-yellow-100/80 px-1.5 py-0.5 rounded-md">+100 recetas artesanales</strong> listas para hacer, vender y generar ingresos.
               </p>
               <img 
                 src="https://res.cloudinary.com/dvg6hojfs/image/upload/v1777856337/Gemini_Generated_Image_og9ha8og9ha8og9h_h8c8lx.png" 
