@@ -69,7 +69,7 @@ export default function App() {
               <img 
                 src="https://res.cloudinary.com/dvg6hojfs/image/upload/v1777856337/Gemini_Generated_Image_og9ha8og9ha8og9h_h8c8lx.png" 
                 alt="Conservas caseras"
-                className="w-full max-w-lg mx-auto mt-8 mb-10 object-contain rounded-xl border border-olive-200/60 shadow-sm" 
+                className="relative left-1/2 -translate-x-1/2 w-[calc(100%+2rem)] max-w-[calc(100%+2rem)] sm:w-full sm:max-w-lg sm:static sm:translate-x-0 sm:mx-auto mt-8 mb-10 object-contain rounded-xl border border-olive-200/60 shadow-md" 
               />
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <CTAButton />
@@ -120,7 +120,7 @@ export default function App() {
             <img 
               src="https://res.cloudinary.com/dvg6hojfs/image/upload/v1777856336/Gemini_Generated_Image_eqfgmceqfgmceqfg_ekaove.png" 
               alt="Método Conserva Rentable"
-              className="w-full max-w-xl mx-auto mt-12 object-contain rounded-xl border border-olive-200/60 shadow-sm" 
+              className="relative left-1/2 -translate-x-1/2 w-[calc(100%+2rem)] max-w-[calc(100%+2rem)] sm:w-full sm:max-w-xl sm:static sm:translate-x-0 sm:mx-auto mt-12 object-contain rounded-xl border border-olive-200/60 shadow-md" 
             />
           </div>
         </div>
