@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Check, 
   ShieldCheck, 
@@ -13,6 +13,8 @@ import {
   Lock,
   ChevronDown,
   ChevronUp,
+  ChevronLeft,
+  ChevronRight,
   HeartHandshake,
   Home,
   HelpCircle,
@@ -21,6 +23,81 @@ import {
 import { motion } from 'motion/react';
 
 // --- Shared Components --- //
+
+const carouselImages = [
+  { src: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777942118/download_3_q6s0d3.jpg", alt: "Recetas preparadas" },
+  { src: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777942119/picles_uw8gas.jpg", alt: "Picles artesanal" },
+  { src: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777942118/Knackiger_Radieschen-Gurken-Snack_im_Glas_oiefc8.jpg", alt: "Snack de rábano y pepino en pote" },
+  { src: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777942118/download_1_trwxsw.jpg", alt: "Variedad de conservas" },
+  { src: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777942118/Aprenda_preparar_salada_no_pote_de_vidro__Pr%C3%A1tica_gostosa_e_saud%C3%A1vel_cuhoax.jpg", alt: "Ensalada en pote de vidrio" },
+  { src: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777942118/Hydrating_Pineapple_Cucumber_Salad_Recipe_for_a_Slimmer_Summer_xhbdod.jpg", alt: "Ensalada hidratante" },
+  { src: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1777942118/download_4_v473si.jpg", alt: "Más recetas de conservas" }
+];
+
+function ImageCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
+  };
+
+  const goToPrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + carouselImages.length) % carouselImages.length);
+  };
+
+  return (
+    <div className="relative w-full max-w-[340px] sm:max-w-[400px] md:max-w-[440px] mx-auto px-6 sm:px-14">
+      <div className="overflow-hidden rounded-2xl shadow-md border border-olive-100 relative aspect-[4/5] bg-cream-50">
+        {carouselImages.map((image, index) => (
+          <img
+            key={index}
+            src={image.src}
+            alt={image.alt}
+            className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              index === currentIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ))}
+      </div>
+      
+      <button 
+        onClick={goToPrev}
+        className="absolute top-1/2 -left-2 sm:left-2 md:left-4 -translate-y-1/2 bg-white hover:bg-olive-50 text-olive-900 p-2 sm:p-3 rounded-full shadow-lg border border-olive-200 transition-all focus:outline-none focus:ring-2 focus:ring-olive-500 z-10"
+        aria-label="Anterior"
+      >
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
+      
+      <button 
+        onClick={goToNext}
+        className="absolute top-1/2 -right-2 sm:right-2 md:right-4 -translate-y-1/2 bg-white hover:bg-olive-50 text-olive-900 p-2 sm:p-3 rounded-full shadow-lg border border-olive-200 transition-all focus:outline-none focus:ring-2 focus:ring-olive-500 z-10"
+        aria-label="Siguiente"
+      >
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
+
+      <div className="flex flex-wrap justify-center gap-2 mt-6">
+        {carouselImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-olive-500 focus:ring-offset-2 focus:ring-offset-white ${
+              index === currentIndex ? 'bg-olive-600 w-8' : 'bg-olive-300 w-2.5 hover:bg-olive-400'
+            }`}
+            aria-label={`Ir a imagen ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const CTAButton = ({ text = "QUIERO ACCEDER AHORA" }) => (
   <div className="flex flex-col items-center w-full">
@@ -175,6 +252,18 @@ export default function App() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* 📸 4.5. GALERÍA DE RECETAS */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl font-serif font-black tracking-tight text-olive-900 sm:text-4xl">Mira un poco de lo que vas a aprender a preparar:</h2>
+            <p className="mt-4 text-lg text-olive-600 font-medium max-w-2xl mx-auto">Recetas que además de deliciosas, llaman mucho la atención y son un éxito de ventas.</p>
+          </div>
+          
+          <ImageCarousel />
         </div>
       </section>
 
