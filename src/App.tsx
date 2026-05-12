@@ -284,7 +284,7 @@ export default function App() {
             <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
                 { image: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1769132164/4_srzleu.png", icon: Tag, title: "+60 Recetas en Frasco Goumert Rentable", desc: "" },
-                { icon: Truck, title: "Lista de Proveedores Económicos", desc: "Encuentra insumos al mejor precio." },
+                { image: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1778553393/00215_a5a6jj.png", icon: Truck, title: "Aderezos Caseros Rentables", desc: "" },
                 { icon: Smartphone, title: "Guía rápida para vender", desc: "Por WhatsApp e Instagram." }
               ].map((bono, i) => (
                 <div key={i} className={`bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 flex flex-col items-center lg:items-start text-center lg:text-left overflow-hidden ${bono.image ? 'p-0 pb-6' : 'p-6'}`}>
