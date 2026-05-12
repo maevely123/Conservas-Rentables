@@ -283,14 +283,18 @@ export default function App() {
             
             <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
-                { icon: Tag, title: "Modelos de Etiquetas Listas", desc: "(para darle un aspecto profesional a tu producto)" },
+                { image: "https://res.cloudinary.com/dvg6hojfs/image/upload/v1769280711/ChatGPT_Image_24_de_jan._de_2026_15_50_49_dybfkk.png", icon: Tag, title: "Ensaladas en Frasco Rentable", desc: "" },
                 { icon: Truck, title: "Lista de Proveedores Económicos", desc: "Encuentra insumos al mejor precio." },
                 { icon: Smartphone, title: "Guía rápida para vender", desc: "Por WhatsApp e Instagram." }
               ].map((bono, i) => (
-                <div key={i} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                  <bono.icon className="h-8 w-8 text-yellow-400 mb-4 mx-auto lg:mx-0" />
+                <div key={i} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 flex flex-col items-center lg:items-start text-center lg:text-left">
+                  {bono.image ? (
+                    <img src={bono.image} alt={bono.title} className="w-full max-w-[160px] h-auto object-contain rounded-lg mb-4 drop-shadow-md" />
+                  ) : (
+                    <bono.icon className="h-8 w-8 text-yellow-400 mb-4" />
+                  )}
                   <h3 className="text-lg font-bold text-white leading-tight mb-2">{bono.title}</h3>
-                  <p className="text-sm text-olive-200">{bono.desc}</p>
+                  {bono.desc && <p className="text-sm text-olive-200">{bono.desc}</p>}
                 </div>
               ))}
             </div>
